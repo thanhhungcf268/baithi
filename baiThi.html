@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+</body>
+</html>
+<script>
+    <!--câu 1-->
+    let array1 = [3, 4, 5, 4, 6, 5]
+
+    function FindMax(array) {
+        let max = array[0]
+        for (let i = 1; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    FindMax(array1)
+
+    //câu 2;
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 21, 3, 43, 56, 76, 2]
+    let x = 5;
+    function tryRemoveFromArray(array) {
+        let newArray = []
+        let a = array.indexOf(x)
+        if (a === -1) {
+            return array;
+        }
+        for (let i = 0; i < array.length; i++) {
+            if (x === array[i]) {
+                newArray.push(array[i])
+            }
+        }
+        return newArray;
+    }
+
+    tryRemoveFromArray(array,x)
+
+    // câu 3
+    let number = 5;
+    function isFibonacci(number) {
+        let array = [1, 1]
+        for (let i=0;i<array.length;i++){
+            array.push(array[i]+array[i+1]);
+            if(number<array[array.length-1]){
+                break;
+            }
+        }
+        if (number < 1) {
+            return false;
+        }
+        for (let i = 0; i < array.length; i++) {
+            if (number === array[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+    isFibonacci(number)
+    // câu 4;
+    class Circle {
+        x;
+        y;
+        radius;
+
+        constructor(x, y, radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+
+        render(canvas) {
+            let ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#000000';
+            ctx.fill();
+        }
+    }
+
+    let canvas = document.getElementById("myCanvas");
+    let hinhTron = new Circle(10, 10, 100);
+    hinhTron.render(canvas);
+</script>
